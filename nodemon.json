@@ -1,0 +1,8 @@
+{
+  "env": {
+    "__DEV__": "true"
+  },
+  "watch": ["src", "vite.config.ts", "manifest.json"],
+  "ext": "tsx,css,html,ts,json",
+  "exec": "vite build"
+}
