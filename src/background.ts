@@ -1,15 +1,11 @@
 import { config } from './config';
 
-let slowReaderPort;
-
 chrome.runtime.onConnectExternal.addListener((port) => {
   console.log(port);
-  if (port.sender?.url === config.HOST) {
+  if (port.sender?.origin === config.HOST) {
     console.log(`connection attempt from ${config.HOST}`);
     port.postMessage({ message: 'Extension was connected' });
-    slowReaderPort = port;
-    slowReaderPort.onMessage.addListener(async (message) => {
-      console.log('Message was received');
+    port.onMessage.addListener(async (message) => {
       port.postMessage({ message: 'Message was received' });
       if (message.name === 'fetchData' && message.url) {
         const fetchedData = await new Promise((resolve) =>
