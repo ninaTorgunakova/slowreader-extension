@@ -6,14 +6,18 @@ chrome.runtime.onConnectExternal.addListener((port) => {
     console.log(`connection attempt from ${config.HOST}`);
     port.postMessage({ message: 'Extension was connected' });
     port.onMessage.addListener(async (message) => {
+      console.log(message);
       port.postMessage({ message: 'Message was received' });
-      if (message.name === 'fetchData' && message.url) {
-        const fetchedData = await new Promise((resolve) =>
-          setTimeout(resolve, 1000),
-        ).catch((error) => {
-          port.postMessage({ data: null, error: error });
-        });
-        port.postMessage({ data: fetchedData });
+      if (message.name === 'fetch' && message.url) {
+        await fetch(message.url, message.options)
+          .then((data) => {
+            console.log(data);
+            port.postMessage({ data });
+          })
+          .catch((error) => {
+            console.error(error);
+            port.postMessage({ data: null, error: error.toString() });
+          });
       }
       return true;
     });
