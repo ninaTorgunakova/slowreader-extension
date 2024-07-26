@@ -16,6 +16,7 @@
 ## Quickstart
 
 - Run `pnpm install` to install dependencies
+- In the `manifest.json` place `"http://localhost:5173/*"` instead of `https://dev.slowreader.app/*`
 - Run `pnpm dev` to build the extension and watch the changes
 - Open `chrome://extensions/` -> `Load unpacked` and choose `dist` folder from this repo
 

@@ -8,11 +8,8 @@
     "type": "module"
   },
   "externally_connectable": {
-    "matches": ["http://localhost:5173/*", "https://dev.slowreader.app/*"]
+    "matches": ["https://dev.slowreader.app/*"]
   },
-  "host_permissions": [
-    "http://localhost:5173/*",
-    "https://dev.slowreader.app/*"
-  ],
+  "host_permissions": ["https://dev.slowreader.app/*"],
   "permissions": ["activeTab", "scripting"]
 }
