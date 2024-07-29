@@ -17,9 +17,14 @@
 
 - Run `pnpm install` to install dependencies
 - Run `pnpm dev` to build the extension and watch the changes
-- Open `chrome://extensions/` -> `Load unpacked` and choose `dist` folder from this repo
+- Open `chrome://extensions/` -> `Load unpacked` and choose `dist` folder from this repo. The extension should appear in the list of your extensions
+- In the `.env` file of the main app, place the next line (`EXTENSION_ID` can be found in the `ID` line inside the uploaded extension block):
 
-During the development process, there is no need to remove the extension and re-upload it. You can just re-build the extension by running `pnpm dev` and then click on the update button at the right bottom of the extension's block.
+```
+VITE_SLOWREADER_EXTENSION_ID=<EXTENSION_ID>
+```
+
+During the development process, you can re-build the extension by clicking on the update button at the right bottom of the extension's block.
 
 You can see the console for errors and logs by clicking on the link at the line `Inspect views: service worker` in the plugin's block.
 
@@ -32,3 +37,5 @@ You can see the console for errors and logs by clicking on the link at the line 
 - Zip the content of the `dist/` folder
 
 - [Follow this official guide to publish the extension in the Chrome Web Store](https://developer.chrome.com/docs/webstore/publish)
+
+- After the extension is published in the Chrome Web Store, add the <EXTENSION_ID> of the published extension as a prod env for the main app.
