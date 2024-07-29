@@ -16,10 +16,19 @@
 ## Quickstart
 
 - Run `pnpm install` to install dependencies
-- In the `manifest.json` place `"http://localhost:5173/*"` instead of `https://dev.slowreader.app/*`
 - Run `pnpm dev` to build the extension and watch the changes
 - Open `chrome://extensions/` -> `Load unpacked` and choose `dist` folder from this repo
 
 During the development process, there is no need to remove the extension and re-upload it. You can just re-build the extension by running `pnpm dev` and then click on the update button at the right bottom of the extension's block.
 
 You can see the console for errors and logs by clicking on the link at the line `Inspect views: service worker` in the plugin's block.
+
+## Publishing
+
+- In the `manifest.json` place `"https://dev.slowreader.app/*"` instead of `"http://localhost:5173/*"`
+
+- Run `yarn build` to build the production files (will be located in `dist/`)
+
+- Zip the content of the `dist/` folder
+
+- [Follow this official guide to publish the extension in the Chrome Web Store](https://developer.chrome.com/docs/webstore/publish)

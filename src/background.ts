@@ -12,11 +12,10 @@ chrome.runtime.onConnectExternal.addListener((port) => {
       console.log(message);
       port.postMessage({ message: 'Message was received' });
       if (message.name === 'fetch' && message.url) {
-        const options = {
+        await fetch(message.url, {
           ...message.options,
           signal: AbortSignal.timeout(FETCH_TIMEOUT_MS)
-        }
-        await fetch(message.url, options)
+        })
           .then((data) => {
             console.log(data);
             port.postMessage({ data });
