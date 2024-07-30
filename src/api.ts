@@ -1,8 +1,5 @@
-type AppMessageType = 'fetch';
-
 export type AppMessage = {
   id?: string;
-  type: AppMessageType;
   url: string;
   options: RequestInit;
 };

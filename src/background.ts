@@ -15,7 +15,7 @@ chrome.runtime.onConnectExternal.addListener((port) => {
 
     port.onMessage.addListener(async (message: AppMessage) => {
       console.log(message);
-      if (message.type === 'fetch' && message.url) {
+      if (message.url) {
         await fetch(message.url, {
           ...message.options,
           signal: AbortSignal.timeout(FETCH_TIMEOUT_MS)
